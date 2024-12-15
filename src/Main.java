@@ -31,7 +31,7 @@ public class Main {
     static String[][] roomDescriptions = {
             // Para Hotel Grand Salon
             {"- Habitación doble con 2 camas dobles, vista al mar, aire acondicionado, cafetera, TV de pantalla plana, ducha y escritorio.\n Precio: $100 por noche",
-                    " - Habitación sencilla con vista al mar, aire acondicionado, TV de pantalla plana y ducha.\n Precio: $100 por noche"},
+                    " - Habitación sencilla con vista al mar, aire acondicionado, TV de pantalla plana y ducha.\n Precio: $125 por noche"},
 
             // Para Villa San Marcos
             {" - Habitación familiar con 2 camas matrimoniales, terraza privada, cocina pequeña, baño completo, vista al jardín. Precio: $180 por noche",
@@ -47,7 +47,7 @@ public class Main {
             {" - Actividades como Botes de remo, Lago, Natación, Juegos de Salón, Pesca, Rutas de Bicicleta, Voleibol.\nIncluye Desayuno, Almuerzo, Refrigerio. Precio: $120 por dia"},
 
             // Para Hotel Globo de oro
-            {"- Habitación doble con 2 camas dobles, vista al mar, aire acondicionado, cafetera, TV de pantalla plana, ducha y escritorio.\n Precio: $100 por noche",
+            {"- Habitación doble con 2 camas dobles, vista al mar, aire acondicionado, cafetera, TV de pantalla plana, ducha y escritorio.\n Precio: $150 por noche",
                     " - Habitación sencilla con vista al mar, aire acondicionado, TV de pantalla plana y ducha.\n Precio: $100 por noche"},
     };
 
