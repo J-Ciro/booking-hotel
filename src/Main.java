@@ -25,7 +25,7 @@ public class Main {
     };
     static int[] avaliableRooms = {
             2, 1, 1,
-            1, 1, 2
+            1, 1 , 2
     };
 
     static String[][] roomDescriptions = {
@@ -126,12 +126,16 @@ public class Main {
         String emailToSearch = scanner.nextLine();
 
         System.out.print("Ingresa tu fecha de nacimiento (DD/MM/AAAA): ");
+        String userBorthDate = scanner.nextLine();
 
         boolean foundReservation = false;
         int reservationIndex = -1;
+        int searchReservation = 0;
 
         // Buscar la reserva correspondiente
         for (int i = 0; i < reservationCount; i++) {
+//            System.out.println("Cual reservacion deseas modificar: ");
+
             if (reservationRecords[i][3].equalsIgnoreCase(emailToSearch)) {
                 foundReservation = true;
                 reservationIndex = i;
@@ -259,7 +263,7 @@ public class Main {
                 }
             }
 
-            // Eliminar la reserva moviendo los registros posteriores
+            // Eliminar la reserva moviendo los registros
             for (int i = reservationIndex; i < reservationCount - 1; i++) {
                 reservationRecords[i] = reservationRecords[i + 1];
             }
@@ -338,19 +342,24 @@ static void getAvaliableRooms(String selectedLodging, int startDay, int finalDay
                               String[][] roomDescriptions, int hotelId,
                               int[] avaliableRooms) {
 
-    if (totalRooms > avaliableRooms[hotelId] && totalRooms < avaliableRooms[hotelId]) {
+    if (totalRooms > avaliableRooms[hotelId] || totalRooms <= 0) {
         System.out.println("No hay habitaciones suficientes disponibles");
+        System.out.println(totalRooms + " TOTAL ROOMS");
+
+        System.out.println(avaliableRooms[hotelId] + " AVALIABLE ROOMS AND HOTEL ID");
         return;
     }
 
-    System.out.println("Detalles de la reserva:");
+
+
+    System.out.println("-------[ Detalles de la reserva: ]-------");
     System.out.println("Alojamiento seleccionado: " + selectedLodging);
     System.out.println("Día de inicio: " + startDay);
     System.out.println("Día final: " + finalDay);
     System.out.println("Total de adultos: " + totalAdults);
     System.out.println("Total de niños: " + totalKids);
     System.out.println("Total de habitaciones: " + totalRooms);
-
+    System.out.println("----------------------------");
     System.out.println("Habitaciones disponibles: " + avaliableRooms[hotelId] + "\n-----------------------------");
 
     // Crear un nuevo arreglo temporal para mostrar solo las habitaciones disponibles
@@ -379,7 +388,9 @@ static void getAvaliableRooms(String selectedLodging, int startDay, int finalDay
 
     // Ajustar la lógica de selección para el nuevo arreglo de habitaciones disponibles
     if (selectedLodgingRoom >= 1 && selectedLodgingRoom <= roomsToShowCount) {
+        System.out.println("--------------------------------------");
         System.out.println("\nHas elegido la habitación número " + selectedLodgingRoom + ":");
+        System.out.println("--------------------------------------");
         System.out.println(roomsToShow[selectedLodgingRoom - 1]);
         System.out.println("¿Deseas continuar con la reserva? (si/no)");
         String continueWithLodging = scanner.nextLine();
@@ -421,10 +432,19 @@ static void getAvaliableRooms(String selectedLodging, int startDay, int finalDay
         double finalPrice = 0;
 
         // Buscar alojamientos que coincidan
-        System.out.println("Alojamientos disponibles:");
+
+        int totalDays = finalDay - startDay;
         for (int i = 0; i < names.length; i++) {
+
+            if (totalDays <= 0 || startDay < 1 || finalDay > 31) {
+                System.out.println("Error: Fecha invalida, volviendo a inicio.");
+                foundLodging = false;
+                return;
+            } else{
+
             // Verificar coincidencia de ciudad y tipo de alojamiento
             if (locations[i].equalsIgnoreCase(city) && types[i].equalsIgnoreCase(lodgingType)) {
+                System.out.println("Alojamientos disponibles:");
 
 
                 System.out.println("-----[ Alojamiento disponible en " + city + " ]-----");
@@ -435,11 +455,8 @@ static void getAvaliableRooms(String selectedLodging, int startDay, int finalDay
                 System.out.println("| Precio por Estadia: $" + prices[i]);
 
                 // Calcular costo base
-                int totalDays = finalDay - startDay;
-                if (totalDays <= 0) {
-                    System.out.println("Error: Fecha invalida");
-                    return;
-                }
+
+
                 int basePrice = prices[i] * totalDays;
                 finalPrice = basePrice;
 
@@ -459,6 +476,8 @@ static void getAvaliableRooms(String selectedLodging, int startDay, int finalDay
                 System.out.println("-----");
                 foundLodging = true;
             }
+            }
+
         }
         // Si no se encontraron alojamientos
         if (!foundLodging) {
@@ -472,7 +491,7 @@ static void getAvaliableRooms(String selectedLodging, int startDay, int finalDay
 
         if (answer.equals("si")) {
             System.out.println("Escribe el nombre exacto del alojamiento:");
-            String selectedLodging = scanner.nextLine();
+            String selectedLodging = scanner.nextLine().toLowerCase();
 
             // Verificar si el alojamiento existe
             boolean validLodging = false;
