@@ -70,7 +70,7 @@ public class Main {
                     mostrarReservas();
                     break;
                 case 2:
-//                    System.out.println("Ciudades Disponibles:");
+                    System.out.println("Ciudades Disponibles: Medellin, Bogota, Santa Fe, Girardota");
                     System.out.println("------ Ingresa los datos de alojamiento ------");
 
                     System.out.print("Ciudad: ");
