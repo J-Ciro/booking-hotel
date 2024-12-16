@@ -74,10 +74,10 @@ public class Main {
                     System.out.println("------ Ingresa los datos de alojamiento ------");
 
                     System.out.print("Ciudad: ");
-                    city = scanner.nextLine();
+                    city = scanner.nextLine().toLowerCase();
 
                     System.out.print("Tipo de alojamiento (ej. Hotel, Apartamento, Finca, Dia de Sol): ");
-                    lodgingType = scanner.nextLine();
+                    lodgingType = scanner.nextLine().toLowerCase();
 
                     System.out.print("Dia de Inicio: ");
                     startDay = Integer.parseInt(scanner.nextLine());
@@ -315,7 +315,7 @@ public class Main {
 
         System.out.println("Se ha realizado la reserva con exito!");
 
-        mostrarReservas();
+//        mostrarReservas();
     }
 
 
